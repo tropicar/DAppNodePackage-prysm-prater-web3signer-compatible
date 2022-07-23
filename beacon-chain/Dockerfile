@@ -18,6 +18,7 @@ FROM debian:bullseye-slim
 COPY --from=binary /usr/local/bin/beacon-chain /usr/local/bin/beacon-chain
 COPY --from=binary /tmp/genesis.ssz /genesis.ssz
 COPY --from=binary /tmp/config.yaml /config.yaml
+COPY entrypoint.sh /entrypoint.sh
 COPY jwtsecret.hex /jwtsecret
 
 RUN apt update && \
