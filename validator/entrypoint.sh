@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CLIENT="prysm"
-export NETWORK="prater"
+export NETWORK="ropsten"
 VALIDATOR_PORT=3500
 export WEB3SIGNER_API="http://web3signer.web3signer-${NETWORK}.dappnode:9000"
 export WALLET_DIR="/root/.eth2validators"
@@ -14,7 +14,7 @@ cp /auth-token ${WALLET_DIR}/auth-token
 if [[ $(validator accounts list \
   --wallet-dir="$WALLET_DIR" \
   --wallet-password-file="${WALLET_DIR}/walletpassword.txt" \
-  --prater \
+  --ropsten \
   --accept-terms-of-use) ]]; then
   {
     echo "found validators, starging migration"
@@ -45,7 +45,7 @@ else
   fi
 fi
 
-exec -c validator --prater \
+exec -c validator --ropsten \
   --datadir="$WALLET_DIR" \
   --wallet-dir="$WALLET_DIR" \
   --monitoring-host 0.0.0.0 \

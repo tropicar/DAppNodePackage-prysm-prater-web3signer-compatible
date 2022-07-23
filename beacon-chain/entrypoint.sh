@@ -14,7 +14,7 @@ exec -c beacon-chain \
   --datadir=/data \
   --rpc-host=0.0.0.0 \
   --accept-terms-of-use \
-  --prater \
+  --ropsten \
   --grpc-gateway-host=0.0.0.0 \
   --monitoring-host=0.0.0.0 \
   --p2p-tcp-port=$P2P_TCP_PORT \
