@@ -1,7 +1,7 @@
-version: "3.4"
+version: "3.5"
 services:
   beacon-chain:
-    image: "beacon-chain.prysm-ropsten.dnp.dappnode.eth:1.0.0"
+    image: "beacon-chain.prysm-ropsten-websigner.dnp.dappnode.eth:1.0.0"
     build:
       context: beacon-chain
       args:
@@ -9,19 +9,20 @@ services:
     volumes:
       - "beacon-chain-data:/data"
     ports:
-      - "13503:13503/tcp"
-      - "12503:12503/udp"
+      - "13303:13303/tcp"
+      - "12303:12303/udp"
     restart: unless-stopped
     environment:
-      HTTP_WEB3PROVIDER: "http://goerli-geth.dappnode:8545"
+      HTTP_WEB3PROVIDER: "http://ropsten.dappnode:8551"
       CHECKPOINT_SYNC_URL: ""
       CORSDOMAIN: "http://prysm-ropsten.dappnode"
+      TTD_OVERRIDE: 50000000000000000
       WEB3_BACKUP: ""
-      P2P_TCP_PORT: 13503
-      P2P_UDP_PORT: 12503
+      P2P_TCP_PORT: 13303
+      P2P_UDP_PORT: 12303
       EXTRA_OPTS: ""
   validator:
-    image: "validator.prysm-ropsten.dnp.dappnode.eth:1.0.0"
+    image: "validator.prysm-ropsten-websigner.dnp.dappnode.eth:1.0.0"
     build:
       context: validator
       dockerfile: Dockerfile
